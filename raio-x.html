@@ -4,10 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>O Raio-X do Perfil | Horizon Frame</title>
+  <meta name="description" content="Conheça o raio-x do perfil da Horizon Frame. Analisamos foto, destaques, conteúdo, bio e feed para elevar o nível da sua marca." />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="simbolo-claro.png" />
+
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     /* Tokens da Marca */
     :root {
@@ -23,17 +29,33 @@
     
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
     
-    /* Header */
+    /* Header (Igual ao da Home) */
     .header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
     .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
-    .logo img { height: 44px; }
-    .nav { display: flex; gap: 28px; }
-    .nav a { font-size: 0.92rem; font-weight: 500; color: var(--text-sec); }
+    
+    .logo img { 
+      height: 40px; 
+      width: auto;
+      object-fit: contain;
+    }
+    
+    .nav { display: flex; align-items: center; gap: 28px; }
+    .nav a { font-size: 0.92rem; font-weight: 500; color: var(--text-sec); transition: color 0.2s; }
     .nav a:hover { color: var(--navy); }
+    .nav a.active { color: var(--navy); font-weight: 700; }
+    
     .btn { display: inline-flex; align-items: center; background: var(--gold); color: var(--navy); font-weight: 600; font-size: 0.9rem; padding: 12px 24px; border-radius: 999px; transition: 0.2s; }
-    .btn:hover { background: #d9a852; }
-    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--line); }
-    .btn-outline:hover { border-color: var(--navy); }
+    .btn:hover { background: #d9a852; transform: translateY(-1px); }
+
+    /* Menu Mobile */
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; }
+    @media (max-width: 860px) {
+      .nav { display: none; }
+      .header .btn { display: none; }
+      .menu-toggle { display: block; }
+      .nav.open { display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: var(--white); padding: 24px; border-bottom: 1px solid var(--line); gap: 18px; }
+    }
 
     /* Hero Interno */
     .hero-inner-page { background: var(--navy); color: var(--white); padding: 80px 0 96px; text-align: center; position: relative; overflow: hidden; }
@@ -68,12 +90,12 @@
     .cta h2 { color: var(--navy); margin-bottom: 16px; }
     .cta p { margin-bottom: 32px; }
 
-    /* Footer */
+    /* Footer (Igual ao da Home) */
     .footer { background: var(--navy); color: var(--text-on-navy); padding: 32px 0; text-align: center; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); }
-    .footer a { color: var(--gold); }
+    .footer a { color: var(--gold); transition: color 0.2s; }
+    .footer a:hover { color: var(--white); }
 
     @media (max-width: 860px) {
-      .nav, .header .btn { display: none; }
       .analysis-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; gap: 36px; }
     }
@@ -81,15 +103,25 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="header">
     <div class="container header-inner">
-      <a href="index.html" class="logo"><img src="logo-horizontal.png" alt="Horizon Frame" /></a>
-      <nav class="nav">
+      <!-- AQUI ESTÁ A CORREÇÃO DA LOGO -->
+      <a href="index.html" class="logo" aria-label="Horizon Frame — página inicial">
+        <img src="logo-horizontal.jpg" alt="Horizon Frame" />
+      </a>
+
+      <nav class="nav" id="nav">
         <a href="index.html">Home</a>
-        <a href="raio-x.html" style="color: var(--navy); font-weight: 700;">O raio-x</a>
+        <a href="raio-x.html" class="active">O raio-x</a>
         <a href="index.html#conteudos">Conteúdos</a>
       </nav>
-      <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20o%20raio-x." class="btn">Falar no WhatsApp</a>
+
+      <a href="https://wa.me/5500000000000" class="btn" target="_blank" rel="noopener">Falar no WhatsApp</a>
+
+      <button class="menu-toggle" aria-label="Abrir menu" onclick="document.getElementById('nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -172,15 +204,16 @@
       <div class="container">
         <h2>Pronto para elevar o nível do seu perfil?</h2>
         <p>O pacote de serviços e os valores variam conforme o perfil e os objetivos de cada marca. Vamos conversar sobre o seu caso.</p>
-        <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20raio-x." class="btn" style="padding: 15px 30px;">Agendar conversa inicial</a>
+        <a href="https://wa.me/5500000000000" class="btn" style="padding: 15px 30px; font-size: 1rem;">Agendar conversa inicial</a>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <p>© 2026 Horizon Frame. Todos os direitos reservados.</p>
-      <p><a href="politica.html">Política de Privacidade e Termos de Uso</a></p>
+      <p style="margin-top: 8px;"><a href="politica.html">Política de Privacidade e Termos de Uso</a></p>
     </div>
   </footer>
 
