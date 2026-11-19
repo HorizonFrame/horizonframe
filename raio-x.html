@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Raio-X do Perfil | Horizon Frame</title>
+  <link rel="icon" type="image/png" href="simbolo-claro.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Tokens da Marca */
+    :root {
+      --navy: #0B1F3A; --gold: #C8963E; --gold-dark: #9A6E1F;
+      --white: #FFFFFF; --bg-light: #F4F6FA; --text-sec: #3B4B63;
+      --text-on-navy: #D6DEEA; --navy-aux: #14305A; --line: #DDE3EC;
+      --font: 'Montserrat', system-ui, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font); font-weight: 400; font-size: 17px; line-height: 1.6; color: var(--text-sec); background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+    h1, h2, h3 { font-weight: 600; line-height: 1.2; }
+    
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .logo img { height: 44px; }
+    .nav { display: flex; gap: 28px; }
+    .nav a { font-size: 0.92rem; font-weight: 500; color: var(--text-sec); }
+    .nav a:hover { color: var(--navy); }
+    .btn { display: inline-flex; align-items: center; background: var(--gold); color: var(--navy); font-weight: 600; font-size: 0.9rem; padding: 12px 24px; border-radius: 999px; transition: 0.2s; }
+    .btn:hover { background: #d9a852; }
+    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--line); }
+    .btn-outline:hover { border-color: var(--navy); }
+
+    /* Hero Interno */
+    .hero-inner-page { background: var(--navy); color: var(--white); padding: 80px 0 96px; text-align: center; position: relative; overflow: hidden; }
+    .hero-inner-page h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; }
+    .hero-inner-page p { color: var(--text-on-navy); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    /* Seções de Conteúdo */
+    section { padding: 88px 0; }
+    .about-light { background: var(--white); }
+    .about-dark { background: var(--navy); color: var(--white); }
+    .about-light h2 { color: var(--navy); margin-bottom: 16px; }
+    .about-dark h2 { color: var(--white); margin-bottom: 16px; }
+    .eyebrow { display: inline-block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 16px; }
+    .about-dark .eyebrow { color: var(--gold); }
+
+    /* Grid de Análise (6 pontos) */
+    .analysis-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 40px; }
+    .analysis-card { background: var(--bg-light); padding: 32px; border-radius: 12px; border-top: 4px solid var(--gold); }
+    .analysis-card h3 { color: var(--navy); margin-bottom: 12px; font-size: 1.2rem; }
+    .analysis-card p { font-size: 0.95rem; }
+
+    /* Passo a passo */
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+    .step { position: relative; padding-top: 28px; border-top: 2px solid rgba(255,255,255,0.1); }
+    .step::before { counter-increment: step; content: "0" counter(step); position: absolute; top: -14px; left: 0; background: var(--navy); padding-right: 12px; font-weight: 800; font-size: 1.05rem; color: var(--gold); }
+    .steps-grid { counter-reset: step; }
+    .step h3 { color: var(--white); margin-bottom: 8px; }
+    .step p { color: var(--text-on-navy); font-size: 0.94rem; }
+
+    /* CTA */
+    .cta { background: var(--bg-light); text-align: center; padding: 96px 0; }
+    .cta h2 { color: var(--navy); margin-bottom: 16px; }
+    .cta p { margin-bottom: 32px; }
+
+    /* Footer */
+    .footer { background: var(--navy); color: var(--text-on-navy); padding: 32px 0; text-align: center; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer a { color: var(--gold); }
+
+    @media (max-width: 860px) {
+      .nav, .header .btn { display: none; }
+      .analysis-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="logo-horizontal.png" alt="Horizon Frame" /></a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="raio-x.html" style="color: var(--navy); font-weight: 700;">O raio-x</a>
+        <a href="index.html#conteudos">Conteúdos</a>
+      </nav>
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20o%20raio-x." class="btn">Falar no WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO DA PÁGINA -->
+    <section class="hero-inner-page">
+      <div class="container">
+        <span class="eyebrow">O Serviço</span>
+        <h1>O raio-x do seu perfil</h1>
+        <p>Um olhar atento que valoriza os seus pontos fortes e indica os ajustes — muitas vezes simples — que fazem diferença no resultado.</p>
+      </div>
+    </section>
+
+    <!-- O QUE OLHAMOS -->
+    <section class="about-light">
+      <div class="container">
+        <span class="eyebrow">A Metodologia</span>
+        <h2>O que olhamos com atenção</h2>
+        <p>Analisamos o seu perfil de forma 360º, desde a primeira impressão até a estratégia de conteúdo.</p>
+        
+        <div class="analysis-grid">
+          <div class="analysis-card">
+            <h3>1. Foto e nome do perfil</h3>
+            <p>Clareza e identidade logo no primeiro olhar. O seu perfil precisa transmitir profissionalismo e confiança em segundos.</p>
+          </div>
+          <div class="analysis-card">
+            <h3>2. Destaques</h3>
+            <p>Organização e padrão visual das capas. Seus destaques são a vitrine do seu trabalho e devem ser fáceis de navegar.</p>
+          </div>
+          <div class="analysis-card">
+            <h3>3. Conteúdo e constância</h3>
+            <p>O que publicar, quando e com que frequência. Analisamos o seu cronograma para manter a consistência e o engajamento.</p>
+          </div>
+          <div class="analysis-card">
+            <h3>4. Bio e chamada para ação</h3>
+            <p>Quem você é, o que faz e como contratar. A sua bio precisa ser clara e direcionar o cliente para o próximo passo.</p>
+          </div>
+          <div class="analysis-card">
+            <h3>5. Feed e identidade</h3>
+            <p>Cores, estilo e coerência entre os posts. O seu feed deve contar uma história visual alinhada à sua marca.</p>
+          </div>
+          <div class="analysis-card">
+            <h3>6. Análise SWOT</h3>
+            <p>Mapeamos Forças, Oportunidades, Ameaças e pontos a desenvolver. Entenda onde você está e para onde pode ir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="about-dark">
+      <div class="container">
+        <span class="eyebrow">O Processo</span>
+        <h2>Como funciona o nosso trabalho</h2>
+        <p style="color: var(--text-on-navy); max-width: 600px;">Do primeiro contato à entrega do cronograma, tudo é pensado para que você tenha clareza e ação.</p>
+        
+        <div class="steps-grid">
+          <div class="step">
+            <h3>Conversa inicial</h3>
+            <p>Você conta sobre o seu negócio, seus objetivos e seus desafios.</p>
+          </div>
+          <div class="step">
+            <h3>Raio-x e SWOT</h3>
+            <p>Analisamos o perfil e a marca a fundo e organizamos o diagnóstico.</p>
+          </div>
+          <div class="step">
+            <h3>Plano de melhorias</h3>
+            <p>Entregamos uma lista priorizada, do ajuste mais simples ao mais profundo.</p>
+          </div>
+          <div class="step">
+            <h3>Cronograma de conteúdo</h3>
+            <p>Desenhamos o calendário de publicações para você manter a constância.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2>Pronto para elevar o nível do seu perfil?</h2>
+        <p>O pacote de serviços e os valores variam conforme o perfil e os objetivos de cada marca. Vamos conversar sobre o seu caso.</p>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20raio-x." class="btn" style="padding: 15px 30px;">Agendar conversa inicial</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Horizon Frame. Todos os direitos reservados.</p>
+      <p><a href="politica.html">Política de Privacidade e Termos de Uso</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
