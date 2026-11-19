@@ -4,10 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Política de Privacidade e Termos | Horizon Frame</title>
+  <meta name="description" content="Política de Privacidade e Termos de Uso da Horizon Frame." />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="simbolo-claro.png" />
+
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     /* Mesmos tokens da marca */
     :root {
@@ -20,16 +26,24 @@
     body { font-family: var(--font); font-weight: 400; font-size: 17px; line-height: 1.6; color: var(--text-sec); background: var(--white); }
     a { text-decoration: none; color: var(--navy); }
     
-    /* Header Simplificado */
-    .header { background: var(--white); border-bottom: 1px solid var(--line); padding: 20px 0; }
     .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header (Padronizado) */
+    .header { background: var(--white); border-bottom: 1px solid var(--line); padding: 20px 0; }
     .header .container { max-width: 1120px; display: flex; justify-content: space-between; align-items: center; }
-    .logo img { height: 40px; }
-    .btn { background: var(--gold); color: var(--navy); padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; }
+    
+    .logo img { 
+      height: 40px; 
+      width: auto;
+      object-fit: contain;
+    }
+    
+    .btn { background: var(--gold); color: var(--navy); padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; transition: 0.2s; }
+    .btn:hover { background: #d9a852; transform: translateY(-1px); }
 
     /* Conteúdo de Texto */
     .legal-content { padding: 64px 0 96px; }
-    .legal-content h1 { color: var(--navy); font-size: 2.4rem; margin-bottom: 40px; }
+    .legal-content h1 { color: var(--navy); font-size: 2.4rem; margin-bottom: 40px; line-height: 1.2; }
     .legal-content h2 { color: var(--navy); font-size: 1.6rem; margin-top: 48px; margin-bottom: 16px; }
     .legal-content h3 { color: var(--navy); font-size: 1.2rem; margin-top: 24px; margin-bottom: 8px; }
     .legal-content p { margin-bottom: 16px; }
@@ -37,16 +51,19 @@
     .legal-content li { margin-bottom: 8px; }
     .legal-content .highlight { background: var(--bg-light); padding: 20px; border-left: 4px solid var(--gold); border-radius: 4px; margin: 24px 0; font-size: 0.95rem; }
 
-    /* Footer Simplificado */
+    /* Footer (Padronizado) */
     .footer { background: var(--navy); color: var(--text-on-navy); padding: 32px 0; text-align: center; font-size: 0.9rem; }
-    .footer a { color: var(--gold); }
+    .footer a { color: var(--gold); transition: color 0.2s; }
+    .footer a:hover { color: var(--white); }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="header">
     <div class="container">
-      <a href="index.html" class="logo"><img src="logo-horizontal.png" alt="Horizon Frame" /></a>
+      <!-- AQUI A LOGO CORRIGIDA -->
+      <a href="index.html" class="logo"><img src="logo-horizontal.jpg" alt="Horizon Frame" /></a>
       <a href="index.html" class="btn">Voltar ao site</a>
     </div>
   </header>
@@ -105,10 +122,11 @@
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <p>© 2026 Horizon Frame. Todos os direitos reservados.</p>
-      <p><a href="index.html">Voltar para a página inicial</a></p>
+      <p style="margin-top: 8px;"><a href="index.html">Voltar para a página inicial</a></p>
     </div>
   </footer>
 
