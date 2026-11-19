@@ -109,7 +109,7 @@
     .hero p { color: var(--text-on-navy); font-size: 1.1rem; max-width: 52ch; margin-bottom: 32px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
     
-    /* Ajuste do Vídeo no Hero */
+    /* Ajuste do Vídeo no Hero - Fundindo com o fundo */
     .hero-visual { 
       display: flex; 
       justify-content: center; 
@@ -118,13 +118,16 @@
     
     .video-container {
       width: 100%;
-      max-width: 320px;
-      aspect-ratio: 9 / 16; /* Mantém o formato vertical do celular */
-      border-radius: var(--radius);
+      max-width: 340px; /* Aumentado levemente para destacar a animação */
+      aspect-ratio: 9 / 16; 
+      border-radius: 0; 
       overflow: hidden;
-      background: var(--navy-aux);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      background: transparent; 
+      box-shadow: none; 
       position: relative;
+      /* Máscara para fundir as bordas do vídeo com o fundo azul */
+      -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+      mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
     }
 
     .video-container video {
@@ -132,12 +135,13 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transform: scale(1.05); /* Zoom sutil para esconder bordas do arquivo original */
     }
 
     @media (max-width: 860px) {
       .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
       .hero-visual { order: -1; }
-      .video-container { max-width: 240px; }
+      .video-container { max-width: 260px; }
       .hero-actions { justify-content: center; }
     }
 
@@ -320,7 +324,7 @@
           </div>
         </div>
         <div class="hero-visual">
-          <!-- VÍDEO DA LOGO AQUI -->
+          <!-- VÍDEO DA LOGO INTEGRADO AO FUNDO -->
           <div class="video-container">
             <video autoplay loop muted playsinline>
               <source src="animacao-logo.mp4" type="video/mp4">
