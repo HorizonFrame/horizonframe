@@ -79,16 +79,17 @@
       display: flex; align-items: center; justify-content: space-between; height: 80px;
     }
     
-    /* TRUQUE DE CSS: Exibe a imagem horizontal como background para ignorar o padding e mostrar o logo legível */
+      /* --- LOGO NO TOPO (HEADER) --- */
     .logo-header {
       display: block;
-      width: 180px;
-      height: 45px;
+      width: 160px;
+      height: 32px; /* Altura exata do logo */
       background-image: url('logo-horizontal.png');
-      background-size: 280%; /* Aumenta o zoom para focar no logo */
-      background-position: center; /* Centraliza o logo */
+      /* O 'auto 200%' mantém a proporção da largura e dobra a altura para cortar as bordas vazias */
+      background-size: auto 250%; 
+      background-position: center;
       background-repeat: no-repeat;
-      border-radius: 6px;
+      border-radius: 4px;
     }
     
     .nav { display: flex; align-items: center; gap: 28px; }
@@ -244,16 +245,16 @@
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .footer h4 { color: var(--white); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
     
-    /* Reutilizando o truque de background para o logo do rodapé */
+   /* --- LOGO NO RODAPÉ (FOOTER) --- */
     .logo-footer {
       display: block;
       width: 180px;
-      height: 45px;
+      height: 36px;
       background-image: url('logo-horizontal.png');
-      background-size: 280%; 
-      background-position: center; 
+      background-size: auto 250%;
+      background-position: center;
       background-repeat: no-repeat;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .footer p { max-width: 34ch; margin-bottom: 20px; }
