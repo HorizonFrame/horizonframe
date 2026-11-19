@@ -6,7 +6,7 @@
   <title>Horizon Frame | Assessoria e gestão estratégica de mídias sociais</title>
   <meta name="description" content="Assessoria e gestão estratégica de mídias sociais. Analisamos seu perfil, valorizamos seus pontos fortes e indicamos os ajustes que fazem diferença." />
 
-  <!-- Favicon usando o símbolo em fundo claro -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="simbolo-claro.png" />
 
   <!-- Fontes -->
@@ -30,7 +30,7 @@
       --line:        #DDE3EC;
 
       --font: 'Montserrat', system-ui, -apple-system, sans-serif;
-      --radius: 12px;
+      --radius: 16px;
       --max-width: 1120px;
     }
 
@@ -85,7 +85,7 @@
     .header-inner {
       display: flex; align-items: center; justify-content: space-between; height: 80px;
     }
-    .logo img { height: 44px; width: auto; }
+    .logo img { height: 40px; width: auto; object-fit: contain; }
     
     .nav { display: flex; align-items: center; gap: 28px; }
     .nav a { font-size: 0.92rem; font-weight: 500; color: var(--text-sec); transition: color 0.2s; }
@@ -121,12 +121,19 @@
     
     .hero-visual { display: flex; justify-content: center; align-items: center; }
     /* Imagem vertical no Hero */
-    .hero-visual img { width: 100%; max-width: 320px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .hero-visual img { 
+      width: 100%; 
+      max-width: 320px; 
+      border-radius: var(--radius); 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+      object-fit: cover;
+    }
 
     @media (max-width: 860px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
       .hero-visual { order: -1; }
       .hero-visual img { max-width: 220px; }
+      .hero-actions { justify-content: center; }
     }
 
     /* Faixa de Prova */
@@ -147,7 +154,13 @@
     }
     .about .link-gold:hover { gap: 14px; }
     /* Imagem quadrada clara no Sobre */
-    .about-visual img { width: 100%; border-radius: var(--radius); box-shadow: 0 10px 30px rgba(11,31,58,0.05); }
+    .about-visual img { 
+      width: 100%; 
+      border-radius: var(--radius); 
+      box-shadow: 0 10px 30px rgba(11,31,58,0.08); 
+      background: var(--bg-light);
+      padding: 20px;
+    }
     @media (max-width: 860px) { .about-inner { grid-template-columns: 1fr; gap: 36px; } }
 
     /* Raio-X */
@@ -163,7 +176,14 @@
     .card p { color: var(--text-on-navy); font-size: 0.96rem; }
 
     /* Imagem vertical escura no Raio-X */
-    .service-visual img { width: 100%; max-width: 340px; border-radius: 20px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .service-visual img { 
+      width: 100%; 
+      max-width: 340px; 
+      border-radius: var(--radius); 
+      margin: 0 auto; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+      object-fit: cover;
+    }
     @media (max-width: 860px) { .service-inner { grid-template-columns: 1fr; } .service-visual { order: -1; margin-bottom: 40px; } }
 
     /* Como funciona */
@@ -194,8 +214,8 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B1F3A' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
       background-size: 14px; background-position: center; background-repeat: no-repeat;
     }
-    .deliver-note { background: var(--bg-light); border-radius: var(--radius); padding: 28px; border-left: 4px solid var(--gold); font-size: 0.94rem; }
-    .deliver-note strong { color: var(--navy); display: block; margin-bottom: 6px; }
+    .deliver-note { background: var(--bg-light); border-radius: var(--radius); padding: 32px; border-left: 4px solid var(--gold); font-size: 0.94rem; }
+    .deliver-note strong { color: var(--navy); display: block; margin-bottom: 6px; font-size: 1.1rem; }
     @media (max-width: 860px) { .deliver-inner { grid-template-columns: 1fr; gap: 36px; } }
 
     /* Conteúdos */
@@ -216,7 +236,7 @@
     /* CTA Final */
     .final-cta { background: var(--bg-light); text-align: center; padding: 96px 0; }
     /* Imagem quadrada escura no CTA */
-    .final-cta img { width: 100px; margin: 0 auto 32px; border-radius: 20px; box-shadow: 0 10px 20px rgba(11,31,58,0.1); }
+    .final-cta img { width: 120px; margin: 0 auto 32px; border-radius: var(--radius); box-shadow: 0 10px 20px rgba(11,31,58,0.1); }
     .final-cta h2 { color: var(--navy); max-width: 22ch; margin: 0 auto 16px; }
     .final-cta p { max-width: 50ch; margin: 0 auto 32px; }
 
@@ -224,7 +244,7 @@
     .footer { background: var(--navy); color: var(--text-on-navy); padding: 64px 0 32px; font-size: 0.92rem; }
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .footer h4 { color: var(--white); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
-    .footer-logo img { height: 48px; width: auto; margin-bottom: 20px; }
+    .footer-logo img { height: 40px; width: auto; margin-bottom: 20px; }
     .footer p { max-width: 34ch; margin-bottom: 20px; }
     .footer ul { list-style: none; display: grid; gap: 10px; }
     .footer a { transition: color 0.2s; }
@@ -264,7 +284,6 @@
   <header class="header">
     <div class="container header-inner">
       <a href="#" class="logo" aria-label="Horizon Frame — página inicial">
-        <!-- Usando a Imagem 1: Logo Horizontal -->
         <img src="logo-horizontal.png" alt="Horizon Frame" />
       </a>
 
@@ -276,7 +295,6 @@
         <a href="#contato">Contato</a>
       </nav>
 
-      <!-- TROCAR PELO NÚMERO REAL -->
       <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20o%20raio-x%20do%20perfil." class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
 
       <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)">
@@ -294,13 +312,12 @@
           <h1>Seu trabalho é bom. <em>Seu perfil precisa mostrar isso.</em></h1>
           <p>Analisamos, orientamos e organizamos o conteúdo para que a sua marca seja vista com todo o seu valor.</p>
           <div class="hero-actions">
-            <!-- TROCAR PELO NÚMERO REAL -->
             <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20o%20raio-x%20do%20meu%20perfil." class="btn btn-primary" target="_blank" rel="noopener">Quero o raio-x do meu perfil</a>
             <a href="#conteudos" class="btn btn-outline">Ver conteúdos</a>
           </div>
         </div>
         <div class="hero-visual">
-          <!-- Usando a Imagem 2: Logo Vertical -->
+          <!-- Logo Vertical no Hero -->
           <img src="logo-vertical.png" alt="Horizon Frame" />
         </div>
       </div>
@@ -319,7 +336,7 @@
     <section class="about" id="sobre">
       <div class="container about-inner">
         <div class="about-visual">
-          <!-- Usando a Imagem 3: Símbolo Fundo Claro -->
+          <!-- Símbolo Claro no Sobre -->
           <img src="simbolo-claro.png" alt="Símbolo Horizon Frame" />
         </div>
         <div>
@@ -327,7 +344,7 @@
           <h2>Prazer, Horizon Frame.</h2>
           <p>Ajudamos profissionais e negócios que fazem um trabalho de qualidade a ter um perfil à altura dele.</p>
           <p>Analisamos, orientamos e organizamos o conteúdo para que a sua marca seja vista com todo o seu valor.</p>
-          <a href="#raio-x" class="link-gold">Conheça o raio-x <span aria-hidden="true">→</span></a>
+          <a href="raio-x.html" class="link-gold">Conheça o raio-x <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -357,8 +374,8 @@
         </div>
         
         <div class="service-visual">
-          <!-- Usando a Imagem 4: Símbolo em pé (Stories) -->
-          <img src="simbolo-stories.png" alt="Horizon Frame Stories" />
+          <!-- CORRIGIDO: Agora aponta para o arquivo simbolo-feed.png que você tem no GitHub -->
+          <img src="simbolo-feed.png" alt="Horizon Frame Feed" />
         </div>
       </div>
     </section>
@@ -396,7 +413,6 @@
           <strong>Sobre valores</strong>
           O pacote de serviços e os valores variam conforme o perfil e os objetivos de cada marca, e são apresentados sob consulta.
           <br><br>
-          <!-- TROCAR PELO NÚMERO REAL -->
           <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20saber%20sobre%20o%20pacote%20e%20os%20valores." class="btn btn-primary" target="_blank" rel="noopener">Pedir uma proposta</a>
         </aside>
       </div>
@@ -416,7 +432,6 @@
           <article class="showcase-item"><span class="tag">Feed</span><span class="title">Orgulho do perfil</span></article>
         </div>
 
-        <!-- TROCAR PELO LINK REAL DO INSTAGRAM -->
         <a href="https://instagram.com/horizonframeassessoria" class="btn btn-outline" target="_blank" rel="noopener">Ver no Instagram</a>
       </div>
     </section>
@@ -424,11 +439,10 @@
     <!-- CTA FINAL -->
     <section class="final-cta" id="contato">
       <div class="container">
-        <!-- Usando a Imagem 5: Símbolo Escuro (Quadrada) -->
+        <!-- Símbolo Escuro no CTA -->
         <img src="simbolo-escuro.png" alt="Símbolo Horizon Frame" />
         <h2>Vamos dar ao seu perfil o tratamento que ele merece?</h2>
         <p>Conte um pouco sobre você e seu negócio. Respondemos em até 1 dia útil.</p>
-        <!-- TROCAR PELO NÚMERO REAL -->
         <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20falar%20com%20a%20Horizon%20Frame." class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
       </div>
     </section>
@@ -440,16 +454,13 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <!-- Usando a Imagem 1 novamente: Logo Horizontal -->
             <img src="logo-horizontal.png" alt="Horizon Frame" />
           </div>
           <p>Assessoria e gestão estratégica de mídias sociais. Um perfil à altura do trabalho que você faz.</p>
           <div class="social">
-            <!-- TROCAR PELO LINK REAL DO INSTAGRAM -->
             <a href="https://instagram.com/horizonframeassessoria" target="_blank" rel="noopener" aria-label="Instagram">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
             </a>
-            <!-- TROCAR PELO NÚMERO REAL -->
             <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5-.2 0-.4 0-.6 0-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.7 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.6 3.7-8.2 8.2-8.2 4.6 0 8.2 3.7 8.2 8.2 0 4.6-3.7 8.3-8.1 8.3z"/></svg>
             </a>
@@ -460,7 +471,7 @@
           <h4>Navegação</h4>
           <ul>
             <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#raio-x">O raio-x</a></li>
+            <li><a href="raio-x.html">O raio-x</a></li>
             <li><a href="#como-funciona">Como funciona</a></li>
             <li><a href="#conteudos">Conteúdos</a></li>
             <li><a href="#contato">Contato</a></li>
@@ -470,11 +481,8 @@
         <div>
           <h4>Contato</h4>
           <ul>
-            <!-- TROCAR PELO E-MAIL REAL -->
             <li><a href="mailto:contato@horizonframe.com.br">contato@horizonframe.com.br</a></li>
-            <!-- TROCAR PELO @ REAL -->
             <li><a href="https://instagram.com/horizonframeassessoria" target="_blank" rel="noopener">@horizonframeassessoria</a></li>
-            <!-- TROCAR PELO NÚMERO REAL -->
             <li><a href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a></li>
           </ul>
         </div>
@@ -490,7 +498,6 @@
   </footer>
 
   <!-- BOTÃO FLUTUANTE WHATSAPP -->
-  <!-- TROCAR PELO NÚMERO REAL -->
   <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vim%20pelo%20site." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5-.2 0-.4 0-.6 0-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.3c1.4.7 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3c-.8-1.3-1.3-2.8-1.3-4.4 0-4.6 3.7-8.2 8.2-8.2 4.6 0 8.2 3.7 8.2 8.2 0 4.6-3.7 8.3-8.1 8.3z"/></svg>
   </a>
