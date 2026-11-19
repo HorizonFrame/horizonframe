@@ -79,17 +79,10 @@
       display: flex; align-items: center; justify-content: space-between; height: 80px;
     }
     
-      /* --- LOGO NO TOPO (HEADER) --- */
-    .logo-header {
-      display: block;
-      width: 160px;
-      height: 32px; /* Altura exata do logo */
-      background-image: url('logo-horizontal.png');
-      /* O 'auto 200%' mantém a proporção da largura e dobra a altura para cortar as bordas vazias */
-      background-size: auto 250%; 
-      background-position: center;
-      background-repeat: no-repeat;
-      border-radius: 4px;
+    .logo img { 
+      height: 40px; 
+      width: auto;
+      object-fit: contain;
     }
     
     .nav { display: flex; align-items: center; gap: 28px; }
@@ -122,12 +115,10 @@
     
     .hero-visual { display: flex; justify-content: center; align-items: center; }
     
-    /* Ajuste da Logo Vertical no Hero */
     .hero-visual img { 
       width: 100%; 
       max-width: 300px; 
       border-radius: var(--radius); 
-      /* Como a imagem tem um fundo azul embutido, o box-shadow ajuda a destacá-la */
       box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
       object-fit: cover;
     }
@@ -157,7 +148,6 @@
     }
     .about .link-gold:hover { gap: 14px; }
     
-    /* Ajuste do Símbolo Escuro no Sobre */
     .about-visual img { 
       width: 100%; 
       border-radius: var(--radius); 
@@ -177,7 +167,6 @@
     .card h3 { color: var(--gold); margin-bottom: 12px; font-weight: 600; }
     .card p { color: var(--text-on-navy); font-size: 0.96rem; }
 
-    /* Ajuste do Símbolo Feed no Raio-X */
     .service-visual img { 
       width: 100%; 
       max-width: 340px; 
@@ -245,16 +234,11 @@
     .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .footer h4 { color: var(--white); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
     
-   /* --- LOGO NO RODAPÉ (FOOTER) --- */
-    .logo-footer {
-      display: block;
-      width: 180px;
-      height: 36px;
-      background-image: url('logo-horizontal.png');
-      background-size: auto 250%;
-      background-position: center;
-      background-repeat: no-repeat;
-      margin-bottom: 24px;
+    .logo-footer img { 
+      height: 40px; 
+      width: auto; 
+      margin-bottom: 24px; 
+      object-fit: contain;
     }
 
     .footer p { max-width: 34ch; margin-bottom: 20px; }
@@ -287,11 +271,12 @@
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
+    <!-- HEADER -->
   <header class="header">
     <div class="container header-inner">
-      <a href="#" class="logo-header" aria-label="Horizon Frame — página inicial"></a>
+      <a href="#" class="logo" aria-label="Horizon Frame — página inicial">
+        <img src="logo-horizontal.jpg" alt="Horizon Frame" />
+      </a>
 
       <nav class="nav" id="nav">
         <a href="#sobre">Sobre</a>
@@ -323,7 +308,6 @@
           </div>
         </div>
         <div class="hero-visual">
-          <!-- Logo Vertical no Hero -->
           <img src="logo-vertical.png" alt="Horizon Frame" />
         </div>
       </div>
@@ -342,7 +326,6 @@
     <section class="about" id="sobre">
       <div class="container about-inner">
         <div class="about-visual">
-          <!-- Trocado para o Símbolo Escuro que tem fundo azul -->
           <img src="simbolo-escuro.png" alt="Símbolo Horizon Frame" />
         </div>
         <div>
@@ -380,7 +363,6 @@
         </div>
         
         <div class="service-visual">
-          <!-- Símbolo Feed no Raio-X -->
           <img src="simbolo-feed.png" alt="Horizon Frame Feed" />
         </div>
       </div>
@@ -445,7 +427,6 @@
     <!-- CTA FINAL -->
     <section class="final-cta" id="contato">
       <div class="container">
-        <!-- Símbolo Claro no CTA Final -->
         <img src="simbolo-claro.png" alt="Símbolo Horizon Frame" />
         <h2>Vamos dar ao seu perfil o tratamento que ele merece?</h2>
         <p>Conte um pouco sobre você e seu negócio. Respondemos em até 1 dia útil.</p>
@@ -453,13 +434,14 @@
       </div>
     </section>
   </main>
-
-  <!-- FOOTER -->
+    <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="logo-footer"></div>
+          <div class="logo-footer">
+            <img src="logo-horizontal.jpg" alt="Horizon Frame" />
+          </div>
           <p>Assessoria e gestão estratégica de mídias sociais. Um perfil à altura do trabalho que você faz.</p>
           <div class="social">
             <a href="https://instagram.com/horizonframeassessoria" target="_blank" rel="noopener" aria-label="Instagram">
