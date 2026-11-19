@@ -137,7 +137,7 @@
     .proof-item span { font-size: 0.9rem; color: var(--text-sec); }
     @media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; gap: 28px; } }
 
-    /* --- SOBRE --- */
+       /* --- SOBRE --- */
     .about { background: var(--white); }
     .about-inner { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: center; }
     .about h2 { color: var(--navy); margin-bottom: 20px; }
@@ -148,11 +148,20 @@
     }
     .about .link-gold:hover { gap: 14px; }
     
-    .about-visual img { 
-      width: 100%; 
+    /* O TRUQUE PARA DIMINUIR O FUNDO AZUL */
+    .about-visual {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* Força um quadrado perfeito */
       border-radius: var(--radius); 
-      box-shadow: 0 10px 30px rgba(11,31,58,0.15); 
+      box-shadow: 0 10px 30px rgba(11,31,58,0.15);
+      
+      /* Configuração da imagem de fundo */
+      background-image: url('simbolo-escuro.png');
+      background-size: 140%; /* Dá um zoom na imagem para aproximar o símbolo e esconder o excesso de azul */
+      background-position: center; /* Centraliza o símbolo */
+      background-repeat: no-repeat;
     }
+    
     @media (max-width: 860px) { .about-inner { grid-template-columns: 1fr; gap: 36px; } }
 
     /* --- RAIO-X --- */
@@ -325,9 +334,7 @@
     <!-- SOBRE -->
     <section class="about" id="sobre">
       <div class="container about-inner">
-        <div class="about-visual">
-          <img src="simbolo-escuro.png" alt="Símbolo Horizon Frame" />
-        </div>
+      <div class="about-visual" aria-label="Símbolo Horizon Frame"></div>
         <div>
           <span class="eyebrow">Quem somos</span>
           <h2>Prazer, Horizon Frame.</h2>
