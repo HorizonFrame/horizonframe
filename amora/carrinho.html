@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacola | Amora Concept</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#7c4098">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-pagina="carrinho">
+  <div id="header"></div>
+
+  <main class="container">
+    <div class="pagina-topo"><p class="eyebrow">Sua sacola</p><h1 style="font-size:clamp(2.4rem,5vw,3.8rem)">Finalizar pedido</h1></div>
+
+    <div class="carrinho" id="carrinho">
+      <div id="itens"></div>
+
+      <aside class="resumo" id="resumo">
+        <h2>Resumo</h2>
+        <div class="linha-resumo"><span>Subtotal</span><span id="subtotal"></span></div>
+        <div class="linha-resumo"><span>Entrega</span><span id="frete"></span></div>
+        <div class="linha-resumo total"><strong>Total</strong><strong id="total"></strong></div>
+        <div class="parcelas" id="parcelas-total" style="text-align:right"></div>
+
+        <form id="form-checkout">
+          <fieldset>
+            <legend>Entrega</legend>
+            <div class="radio-grupo">
+              <label><input type="radio" name="entrega" value="local" checked> <span>Entrega em Cruzeiro do Oeste<small>Grátis · combinamos o horário</small></span></label>
+              <label><input type="radio" name="entrega" value="retirada"> <span>Retirar na loja<small>R. Edmundo Mercer Júnior, 914 – Centro</small></span></label>
+              <label><input type="radio" name="entrega" value="envio"> <span>Enviar para outra cidade<small>Frete combinado no WhatsApp</small></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Seus dados</legend>
+            <label class="campo">Nome completo<input name="nome" required autocomplete="name"></label>
+            <label class="campo">WhatsApp<input name="telefone" type="tel" required autocomplete="tel" placeholder="(44) 90000-0000"></label>
+            <div id="bloco-endereco">
+              <label class="campo">Endereço e número<input name="endereco" autocomplete="street-address"></label>
+              <div class="campos-2">
+                <label class="campo">Bairro<input name="bairro"></label>
+                <label class="campo">Cidade<input name="cidade" value="Cruzeiro do Oeste" autocomplete="address-level2"></label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Pagamento</legend>
+            <div class="radio-grupo" id="pagamentos">
+              <label><input type="radio" name="pagamento" value="pix" checked> <span>Pix<small>Enviamos a chave no WhatsApp</small></span></label>
+              <label><input type="radio" name="pagamento" value="cartao"> <span>Cartão de crédito<small>Até 3x sem juros por link de pagamento</small></span></label>
+              <label><input type="radio" name="pagamento" value="dinheiro"> <span>Dinheiro<small>Na entrega ou retirada</small></span></label>
+            </div>
+          </fieldset>
+
+          <label class="campo">Observações (opcional)<textarea name="obs" rows="2"></textarea></label>
+          <button class="btn btn-amora btn-bloco" type="submit">Enviar pedido pelo WhatsApp</button>
+          <p class="nota">Você revisa a mensagem antes de enviar. Confirmamos disponibilidade e pagamento por lá.</p>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="data/config.js"></script>
+  <script src="data/produtos.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

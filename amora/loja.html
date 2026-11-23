@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Loja | Amora Concept</title>
+  <meta name="description" content="Compre moda feminina online na Amora Concept: vestidos, jeans, calças, blusas, camisas, saias e shorts.">
+  <meta name="theme-color" content="#7c4098">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-pagina="loja">
+  <div id="header"></div>
+
+  <main class="container">
+    <div class="pagina-topo">
+      <p class="eyebrow">Loja</p>
+      <h1 id="titulo-loja" style="font-size:clamp(2.4rem,5vw,3.8rem)">Toda a coleção</h1>
+    </div>
+    <div class="filtros" id="filtros" role="toolbar" aria-label="Categorias"></div>
+    <div class="barra-loja">
+      <span id="contagem"></span>
+      <label>Ordenar por
+        <select id="ordem">
+          <option value="relevancia">Relevância</option>
+          <option value="novos">Novidades</option>
+          <option value="menor">Menor preço</option>
+          <option value="maior">Maior preço</option>
+        </select>
+      </label>
+    </div>
+    <div class="grade" id="grade"></div>
+    <div class="vazio" id="vazio" hidden>Nenhuma peça nesta categoria no momento. <a class="link-seta" href="loja.html">Ver tudo</a></div>
+    <div style="height:5rem"></div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="data/config.js"></script>
+  <script src="data/produtos.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
