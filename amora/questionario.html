@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Questionário do site | Amora Concept</title>
+  <meta name="theme-color" content="#7c4098">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .q-wrap { width: min(760px, 100% - 2.5rem); margin: 0 auto; padding: 3rem 0 6rem; }
+    .q-intro { text-align: center; margin-bottom: 2.5rem; }
+    .q-intro p { color: var(--cinza); }
+    .q-progresso { position: sticky; top: 76px; z-index: 40; background: var(--creme); padding: .8rem 0; border-bottom: 1px solid var(--linha); margin-bottom: 1.5rem; }
+    .q-barra { height: 6px; background: var(--nude); border-radius: 3px; overflow: hidden; }
+    .q-barra span { display: block; height: 100%; width: 0; background: var(--amora); transition: width .3s; }
+    .q-progresso small { display: block; margin-top: .4rem; font-size: .8rem; color: var(--cinza); }
+    .q-secao { margin-top: 3rem; }
+    .q-secao h2 { font-size: 2rem; border-bottom: 1px solid var(--linha); padding-bottom: .6rem; margin-bottom: 1.4rem; }
+    .q-item { background: #fff; border: 1px solid var(--linha); padding: 1.3rem 1.3rem 1.1rem; margin-bottom: 1rem; }
+    .q-item > legend, .q-item > label.q-titulo { display: block; font-weight: 500; margin-bottom: .8rem; line-height: 1.45; padding: 0; float: left; width: 100%; }
+    .q-item .q-dica { display: block; font-weight: 400; font-size: .85rem; color: var(--cinza); margin-top: .2rem; }
+    .q-item textarea, .q-item input[type=text] { clear: both; width: 100%; font: inherit; font-size: 16px; border: 1px solid var(--linha); border-radius: var(--raio); padding: .75rem .9rem; background: var(--creme); color: var(--tinta); }
+    .q-item textarea { min-height: 84px; resize: vertical; }
+    .q-item textarea:focus, .q-item input:focus { outline: 2px solid var(--amora); outline-offset: 1px; }
+    .q-opcoes { clear: both; display: grid; gap: .5rem; }
+    .q-opcoes label { display: flex; gap: .7rem; align-items: center; border: 1px solid var(--linha); padding: .7rem .9rem; cursor: pointer; min-height: 44px; font-size: .95rem; }
+    .q-opcoes label:has(input:checked) { border-color: var(--amora); background: #f7f0fa; }
+    .q-opcoes input { width: 18px; height: 18px; accent-color: var(--amora); flex: none; }
+    .q-outro { margin-top: .5rem; }
+    .q-logos { clear: both; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .7rem; }
+    .q-logos label { display: flex; flex-direction: column; border: 2px solid var(--linha); cursor: pointer; background: #fff; }
+    .q-logos label:has(input:checked) { border-color: var(--amora); }
+    .q-logos .arte { height: 150px; display: grid; place-items: center; overflow: hidden; }
+    .q-logos .legenda { display: flex; gap: .6rem; align-items: flex-start; padding: .7rem .8rem; font-size: .88rem; line-height: 1.35; }
+    .q-logos .legenda input { margin-top: .15rem; width: 18px; height: 18px; accent-color: var(--amora); flex: none; }
+    .q-logos small { display: block; color: var(--cinza); font-size: .78rem; }
+    .q-enviar { margin-top: 3rem; background: #fff; border: 1px solid var(--linha); padding: 2rem; text-align: center; }
+    .q-enviar .btn { width: 100%; max-width: 420px; }
+    .q-enviar .linha-botoes { display: flex; flex-direction: column; align-items: center; gap: .7rem; margin-top: 1.2rem; }
+    .q-salvo { font-size: .8rem; color: var(--ok); min-height: 1.2em; margin-top: .6rem; }
+    .grape-mini { width: 46px; height: 56px; }
+  </style>
+</head>
+<body data-pagina="questionario">
+  <div id="header"></div>
+
+  <main class="q-wrap">
+    <div class="q-intro">
+      <p class="eyebrow">Questionário do site</p>
+      <h1 style="font-size: clamp(2.2rem, 5vw, 3.4rem)">Vamos deixar o site com a sua cara</h1>
+      <p>São perguntas rápidas sobre a loja, os produtos e como você quer vender. Leva cerca de 15 minutos. Pode deixar em branco o que não souber.</p>
+      <p>Suas respostas ficam salvas neste aparelho enquanto você preenche. No final, toque em <strong>Enviar pelo WhatsApp</strong>.</p>
+    </div>
+
+    <div class="q-progresso" aria-live="polite">
+      <div class="q-barra"><span id="barra"></span></div>
+      <small id="progresso-texto">0 de 0 respondidas</small>
+    </div>
+
+    <form id="questionario" novalidate></form>
+
+    <div class="q-enviar">
+      <h2 style="font-size: 1.8rem">Pronto!</h2>
+      <p class="muted">Ao tocar no botão, o WhatsApp abre com todas as respostas já escritas. É só enviar a mensagem.</p>
+      <div class="linha-botoes">
+        <button class="btn btn-amora" type="button" id="enviar">Enviar pelo WhatsApp</button>
+        <button class="btn btn-claro" type="button" id="copiar">Copiar respostas</button>
+        <a id="link-whats" class="link-seta" href="#" target="_blank" rel="noopener" hidden>Se o WhatsApp não abriu, toque aqui</a>
+      </div>
+      <div class="q-salvo" id="status"></div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="data/config.js"></script>
+  <script src="data/produtos.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+  {
+    const DESTINO = "5544991074598";
+    const CHAVE = "amora_questionario";
+
+    const uva = (folha, a, b) => `<svg viewBox="0 0 100 120" class="grape-mini" aria-hidden="true"><path d="M52 26 C58 8 76 2 88 8 C82 22 66 30 52 26 Z" fill="${folha}"/><path d="M50 34 C50 26 52 20 58 14" stroke="${folha}" stroke-width="4" fill="none" stroke-linecap="round"/>${[[20,44],[42,44],[64,44],[86,44],[31,63],[53,63],[75,63],[42,82],[64,82],[53,101]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="11" fill="${i%2?b:a}"/>`).join("")}</svg>`;
+
+    const LOGOS = [
+      { v: "Manter o logo atual", t: "Manter o atual", d: "Exatamente como está hoje",
+        arte: `<div class="arte" style="background:#7c4098"><img src="assets/img/logo-horizontal.jpg" alt="" style="width:92%"></div>` },
+      { v: "Proposta 1 — Refinada", t: "Proposta 1 — Refinada", d: "Mesma ideia, traço mais elegante",
+        arte: `<div class="arte" style="background:#7c4098"><div style="text-align:right"><div style="display:flex;align-items:flex-end;font-family:'Great Vibes',cursive;font-size:62px;line-height:.9;color:#fff">Am<span style="display:inline-block;width:30px;margin:0 1px 4px">${uva("#3e9a5f","#5c155b","#6b2069").replace('class="grape-mini"','style="width:30px;height:36px"')}</span>ra</div><div style="font-size:9px;letter-spacing:.5em;color:#fff;margin-top:3px">CONCEPT</div></div></div>` },
+      { v: "Proposta 2 — Moderna", t: "Proposta 2 — Moderna", d: "Visual de boutique, uva como símbolo",
+        arte: `<div class="arte" style="background:#f4ecf6"><div style="text-align:center">${uva("#2a7a47","#7c4098","#5c155b").replace('class="grape-mini"','style="width:26px;height:31px"')}<div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:50px;line-height:.95;color:#5c155b">amora</div><div style="font-size:9px;letter-spacing:.6em;color:#7c4098">CONCEPT</div></div></div>` },
+      { v: "Proposta 3 — Selo (junto com outra)", t: "Proposta 3 — Selo", d: "Para Instagram e etiquetas, junto com outra",
+        arte: `<div class="arte" style="background:#fff"><div style="width:120px;height:120px;border-radius:50%;background:#7c4098;display:grid;place-items:center;text-align:center;color:#fff"><div><div style="font-size:9px;letter-spacing:.35em">AMORA</div>${uva("#4fb57a","#ffffff","#ead9f2").replace('class="grape-mini"','style="width:38px;height:46px"')}<div style="font-family:'Great Vibes',cursive;font-size:18px;line-height:1">concept</div></div></div></div>` },
+      { v: "Criar um logo totalmente novo", t: "Criar um logo novo", d: "Começar do zero",
+        arte: `<div class="arte" style="background:var(--nude);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;color:#7c4098">novo?</div>` }
+    ];
+
+    const SECOES = [
+      { titulo: "1. Sobre a loja e a marca", perguntas: [
+        { id: "historia", tipo: "texto", p: "Como e quando a Amora Concept começou? Por que o nome \"Amora\"?" },
+        { id: "cliente", tipo: "texto", p: "Quem é a sua cliente?", dica: "Faixa de idade, estilo, profissão, cidades onde mora" },
+        { id: "diferencial", tipo: "texto", p: "O que faz uma cliente escolher a Amora e não outra loja?" },
+        { id: "palavras", tipo: "linha", p: "Quais 3 palavras descrevem a loja?", dica: "Ex.: elegante, acessível, moderna, aconchegante" },
+        { id: "precos", tipo: "linha", p: "Qual a faixa de preço das peças?", dica: "Da mais barata à mais cara" },
+        { id: "admira", tipo: "texto", p: "Quais marcas ou lojas (de qualquer lugar) você admira?" }
+      ]},
+      { titulo: "2. Identidade visual", perguntas: [
+        { id: "logo", tipo: "logos", p: "Sobre o logo, qual caminho você prefere?", dica: "Pode marcar mais de um se ficar em dúvida" },
+        { id: "cores", tipo: "texto", p: "O roxo deve continuar sendo a cor principal? Gostaria de usar mais alguma cor?" },
+        { id: "fotos", tipo: "multi", p: "Você tem fotos das peças e da loja?", ops: ["Tenho fotos de produto (fundo neutro ou modelo vestindo)", "Tenho fotos da loja por dentro e da fachada", "Uso as fotos do Instagram", "Ainda não tenho, gostaria de indicação de fotógrafo"] },
+        { id: "referencias", tipo: "texto", p: "Mande 2 ou 3 sites ou perfis cujo visual você gosta, e o que gosta em cada um." },
+        { id: "nao_quer", tipo: "texto", p: "Existe algo que você NÃO quer de jeito nenhum no site?", dica: "Cores, estilos, músicas, janelas que pulam na tela" }
+      ]},
+      { titulo: "3. Produtos e catálogo", perguntas: [
+        { id: "qtd_pecas", tipo: "unica", p: "Quantas peças diferentes você teria no site, mais ou menos?", ops: ["Até 50", "De 50 a 200", "Mais de 200"] },
+        { id: "novidades", tipo: "linha", p: "Com que frequência chegam novidades?" },
+        { id: "quem_cadastra", tipo: "texto", p: "Quem vai cadastrar e atualizar os produtos? Pelo celular ou pelo computador?" },
+        { id: "estoque", tipo: "multi", p: "Como você controla o estoque hoje?", ops: ["Caderno ou de cabeça", "Planilha", "Sistema de loja", "Maquininha com catálogo"], outro: "Qual sistema?" },
+        { id: "estoque_integrado", tipo: "texto", p: "Quando uma peça vende na loja física, ela precisa sumir do site automaticamente?" },
+        { id: "categorias", tipo: "texto", p: "Que categorias o site deve ter?", dica: "Hoje: vestidos, jeans, calças, blusas, camisas, saias, shorts. Falta alguma, como acessórios, bolsas, calçados ou plus size?" },
+        { id: "info_peca", tipo: "multi", p: "Quais informações cada peça precisa mostrar?", ops: ["Tabela de medidas", "Composição do tecido", "Medidas da modelo da foto", "Vídeo da peça", "Sugestão de look (\"combina com\")"] }
+      ]},
+      { titulo: "4. Vendas e pagamento", perguntas: [
+        { id: "finalizar", tipo: "unica", p: "Como você quer que a cliente finalize a compra?", ops: ["Paga direto no site (Pix ou cartão)", "Monta a sacola no site e finaliza pelo WhatsApp", "As duas opções"] },
+        { id: "instituicao", tipo: "linha", p: "Qual maquininha, banco ou conta de recebimento você já usa?", dica: "Ex.: Mercado Pago, PagBank, InfinitePay, Stone/Ton, Cielo, Getnet, Sicredi" },
+        { id: "formas", tipo: "multi", p: "Quais formas de pagamento aceitar no site?", ops: ["Pix", "Cartão de crédito", "Boleto", "Crediário para clientes conhecidas"] },
+        { id: "parcelas", tipo: "texto", p: "Em quantas vezes sem juros você parcela? Tem valor mínimo por parcela? Dá desconto no Pix?" },
+        { id: "vende_online", tipo: "texto", p: "Você já vende pela internet hoje (Instagram, WhatsApp, Shopee)? Quantos pedidos por mês, mais ou menos?" }
+      ]},
+      { titulo: "5. Entrega, retirada e trocas", perguntas: [
+        { id: "alcance", tipo: "multi", p: "Para onde você quer vender?", ops: ["Só Cruzeiro do Oeste", "Cidades da região", "Todo o Brasil pelos Correios ou transportadora"], outro: "Quais cidades da região?" },
+        { id: "entrega_local", tipo: "texto", p: "Como é a entrega na cidade hoje? Tem taxa? Quem entrega e em quais horários?" },
+        { id: "frete_gratis", tipo: "linha", p: "A partir de qual valor de compra o frete é grátis?" },
+        { id: "trocas", tipo: "texto", p: "Qual a política de trocas?", dica: "Prazo, condições, quem paga o frete da troca" },
+        { id: "endereco", tipo: "unica", p: "Qual é o endereço certo da loja? Encontramos os dois na internet.", ops: ["R. Edmundo Mercer Júnior, 914", "Rua Paraná, 914"], outro: "Outro ou complemento" }
+      ]},
+      { titulo: "6. O que o site deve ter", perguntas: [
+        { id: "funcoes", tipo: "multi", p: "Marque tudo o que você gostaria. Depois definimos juntas o que entra na primeira versão.", ops: ["Cadastro de cliente com login e histórico de pedidos", "Lista de desejos (favoritos)", "Cupons de desconto", "Promoções com contagem regressiva", "Aviso \"me avise quando chegar\" para peças esgotadas", "Busca por nome, cor ou tamanho", "Fotos do Instagram aparecendo no site", "Avaliações e fotos de clientes", "Cadastro para receber novidades", "Guia de tamanhos", "Vale-presente", "Programa de fidelidade ou cashback", "Blog com dicas de looks", "Aviso de novos pedidos no seu WhatsApp ou e-mail", "Relatório de vendas", "Integração com a loja do Instagram e Facebook"] },
+        { id: "prioridade", tipo: "texto", p: "Qual dessas é a mais importante? E qual ideia que não está na lista você gostaria?" }
+      ]},
+      { titulo: "7. Informações finais", perguntas: [
+        { id: "dominio", tipo: "linha", p: "Já tem um endereço de site registrado? Se não, qual nome prefere?", dica: "Ex.: amoraconcept.com.br" },
+        { id: "contatos", tipo: "texto", p: "Quais contatos devem aparecer no site?", dica: "WhatsApp, telefone fixo, e-mail, Instagram, Facebook, TikTok" },
+        { id: "horarios", tipo: "unica", p: "O horário continua segunda a sexta das 9h às 18h e sábado das 9h às 13h?", ops: ["Sim", "Não"], outro: "Qual o horário certo?" },
+        { id: "quem_cuida", tipo: "linha", p: "Quem vai cuidar do site no dia a dia (atualizar peças, responder pedidos)?" },
+        { id: "prazo", tipo: "texto", p: "Para quando você gostaria do site no ar? Tem alguma data importante?", dica: "Aniversário da loja, Natal, Dia das Mães" },
+        { id: "orcamento", tipo: "unica", p: "Quanto você aceita pagar por mês por uma plataforma de loja?", ops: ["Prefiro custo zero e pagar só as taxas por venda", "Até R$ 100 por mês", "Até R$ 300 por mês", "Depende do que oferece"] },
+        { id: "nome", tipo: "linha", p: "Seu nome" },
+        { id: "mais", tipo: "texto", p: "Algo mais que você queira contar?" }
+      ]}
+    ];
+
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const form = document.getElementById("questionario");
+    let n = 0;
+
+    form.innerHTML = SECOES.map((s) => `<section class="q-secao"><h2>${esc(s.titulo)}</h2>${s.perguntas.map((q) => {
+      n++;
+      const titulo = `${n}. ${esc(q.p)}${q.dica ? `<span class="q-dica">${esc(q.dica)}</span>` : ""}`;
+      const outro = q.outro ? `<input type="text" class="q-outro" name="${q.id}__outro" placeholder="${esc(q.outro)}">` : "";
+      if (q.tipo === "texto") return `<div class="q-item"><label class="q-titulo" for="${q.id}">${titulo}</label><textarea id="${q.id}" name="${q.id}"></textarea></div>`;
+      if (q.tipo === "linha") return `<div class="q-item"><label class="q-titulo" for="${q.id}">${titulo}</label><input type="text" id="${q.id}" name="${q.id}"></div>`;
+      if (q.tipo === "logos") return `<fieldset class="q-item"><legend>${titulo}</legend><div class="q-logos">${LOGOS.map((l) => `<label>${l.arte}<span class="legenda"><input type="checkbox" name="${q.id}" value="${esc(l.v)}"><span>${esc(l.t)}<small>${esc(l.d)}</small></span></span></label>`).join("")}</div><input type="text" class="q-outro" name="${q.id}__outro" placeholder="Comentário sobre o logo (opcional)"></fieldset>`;
+      const tipoInput = q.tipo === "unica" ? "radio" : "checkbox";
+      return `<fieldset class="q-item"><legend>${titulo}</legend><div class="q-opcoes">${q.ops.map((o) => `<label><input type="${tipoInput}" name="${q.id}" value="${esc(o)}"> ${esc(o)}</label>`).join("")}</div>${outro}</fieldset>`;
+    }).join("")}</section>`).join("");
+
+    const todas = SECOES.flatMap((s) => s.perguntas);
+
+    function respostas() {
+      const fd = new FormData(form);
+      const r = {};
+      todas.forEach((q) => {
+        const vals = fd.getAll(q.id).map((v) => String(v).trim()).filter(Boolean);
+        const o = String(fd.get(q.id + "__outro") || "").trim();
+        if (o) vals.push(q.tipo === "logos" ? "Comentário: " + o : o);
+        r[q.id] = vals;
+      });
+      return r;
+    }
+
+    function atualizar() {
+      const r = respostas();
+      const feitas = todas.filter((q) => r[q.id].length).length;
+      document.getElementById("barra").style.width = (feitas / todas.length * 100) + "%";
+      document.getElementById("progresso-texto").textContent = `${feitas} de ${todas.length} respondidas`;
+      try { localStorage.setItem(CHAVE, JSON.stringify(r)); document.getElementById("status").textContent = "Respostas salvas neste aparelho."; } catch (e) {}
+    }
+
+    function restaurar() {
+      let r; try { r = JSON.parse(localStorage.getItem(CHAVE)); } catch (e) {}
+      if (!r) return;
+      todas.forEach((q) => {
+        const vals = r[q.id] || [];
+        const campos = form.querySelectorAll(`[name="${q.id}"]`);
+        const outro = form.querySelector(`[name="${q.id}__outro"]`);
+        if (q.tipo === "texto" || q.tipo === "linha") { if (campos[0]) campos[0].value = vals[0] || ""; return; }
+        const usados = new Set();
+        campos.forEach((c) => { if (vals.includes(c.value)) { c.checked = true; usados.add(c.value); } });
+        const resto = vals.filter((v) => !usados.has(v)).map((v) => v.replace(/^Comentário: /, ""));
+        if (outro && resto.length) outro.value = resto.join("; ");
+      });
+    }
+
+    function textoFinal() {
+      const r = respostas();
+      const linhas = ["*Questionário do site — Amora Concept*"];
+      let i = 0;
+      SECOES.forEach((s) => {
+        linhas.push("", `*${s.titulo}*`);
+        s.perguntas.forEach((q) => {
+          i++;
+          linhas.push(`${i}. ${q.p}`, `→ ${r[q.id].length ? r[q.id].join("; ") : "(sem resposta)"}`);
+        });
+      });
+      return linhas.join("\n");
+    }
+
+    form.addEventListener("input", atualizar);
+    form.addEventListener("change", atualizar);
+
+    document.getElementById("enviar").addEventListener("click", () => {
+      const url = `https://wa.me/${DESTINO}?text=${encodeURIComponent(textoFinal())}`;
+      const link = document.getElementById("link-whats");
+      link.href = url; link.hidden = false;
+      try { window.open(url, "_blank", "noopener"); } catch (e) {}
+    });
+
+    document.getElementById("copiar").addEventListener("click", async () => {
+      const st = document.getElementById("status");
+      try { await navigator.clipboard.writeText(textoFinal()); st.textContent = "Respostas copiadas. Cole numa conversa do WhatsApp."; }
+      catch (e) { st.textContent = "Não foi possível copiar automaticamente neste aparelho."; }
+    });
+
+    restaurar();
+    atualizar();
+  }
+  </script>
+</body>
+</html>
